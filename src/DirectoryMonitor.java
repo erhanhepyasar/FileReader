@@ -18,7 +18,6 @@ public class DirectoryMonitor {
         if (!Files.exists(PRODUCTS_PATH)) {
             Files.createDirectory(PRODUCTS_PATH);
         }
-        System.out.println("Please start copying the files to this folder: " + PRODUCTS_PATH.toAbsolutePath());
     }
 
     private static void initializeProcessors() {
@@ -33,6 +32,7 @@ public class DirectoryMonitor {
         Thread pollerThread = new Thread(DirectoryMonitor::scanDirectory);
         pollerThread.setDaemon(true);
         pollerThread.start();
+        System.out.println("Please start copying the files to this folder: " + PRODUCTS_PATH.toAbsolutePath());
     }
 
     private static void processFile(Path filePath) {
